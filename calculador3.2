@@ -3,21 +3,21 @@ import globais
 try:
     def soma(valor):
             globais.backup = globais.acumulador
-            globais.acumulador = globais.acumulador + valor
+            globais.acumulador = globais.acumulador + float(valor)
     
     def subitracao(valor):
 
         globais.backup = globais.acumulador
-        globais.acumulador = globais.acumulador - valor    
+        globais.acumulador = globais.acumulador - float(valor)    
     def multiplicacao(valor):
         globais.backup = globais.acumulador
-        globais.acumulador = globais.acumulador * valor   
+        globais.acumulador = globais.acumulador * float(valor)   
     def divisao(valor):
         try:
         # if valor == 0:
         #     raise ValueError ("Divisão por 0 não é permitida.") 
             globais.backup = globais.acumulador
-            globais.acumulador = globais.acumulador / valor    
+            globais.acumulador = globais.acumulador / float(valor)   
         except ZeroDivisionError:    
             print("Não é permitida divisão por zero .")
     def memoriamr():
