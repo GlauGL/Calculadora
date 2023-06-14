@@ -1,0 +1,106 @@
+import funcoes 
+import globais
+try:
+    def soma(valor):
+            globais.backup = globais.acumulador
+            globais.acumulador = globais.acumulador + float(valor)
+    
+    def subitracao(valor):
+
+        globais.backup = globais.acumulador
+        globais.acumulador = globais.acumulador - float(valor)    
+    def multiplicacao(valor):
+        globais.backup = globais.acumulador
+        globais.acumulador = globais.acumulador * float(valor)   
+    def divisao(valor):
+        try:
+        # if valor == 0:
+        #     raise ValueError ("Divisão por 0 não é permitida.") 
+            globais.backup = globais.acumulador
+            globais.acumulador = globais.acumulador / float(valor)   
+        except ZeroDivisionError:    
+            print("Não é permitida divisão por zero .")
+    def memoriamr():
+        valor = input("Digite um número: ").lower()
+                  # if valor != 'mr':
+            #    print(f'Valor é: {valor}')
+            #    print(f'Tipo do valor é: {type(valor)}')
+            #    valor = float(valor)
+            #    print(f'Valor dps é: {valor}')
+            #    print(f'Tipo do valor dps é: {type(valor)}')
+            #    input('nada')
+        if valor == 'mr':
+            valor = globais.memoria
+        
+        
+        # if valor == str:
+        #     raise ValueError("Este não é um valor")
+        return valor
+
+    def main():
+
+    
+        print(f'Estado Inicial: Acumulador: {globais.acumulador}; Backup: {globais.backup}; Memória: {globais.memoria}')
+
+        while True:
+
+            try:
+                
+                operacao = (input('Digite a operação desejada: ')).lower()
+            
+                if operacao == '=':
+                    globais.backup = globais.acumulador
+                    break
+                elif operacao == '+':
+                    valor = memoriamr()
+                    soma(valor)
+                elif operacao == '-':
+                    valor = memoriamr()
+                    subitracao(valor)    
+                elif operacao == '*':
+                    valor = memoriamr()
+                    multiplicacao(valor)        
+                elif operacao == '/':
+                    valor = memoriamr()
+                    divisao(valor)
+                elif operacao == 'ce':
+                    funcoes.ce()
+                elif operacao =='c':
+                    funcoes.c()
+                elif operacao == 'ms':
+                    funcoes.ms()
+                elif operacao == 'mr':
+                    funcoes.mr()
+                elif operacao == 'mc':
+                    funcoes.mc()
+                elif operacao == 'm+':
+                    funcoes.mmais()
+                elif operacao == 'm-':
+                    funcoes.mmenos()
+                elif operacao == '+/-':
+                    globais.acumulador = globais.acumulador - globais.acumulador*2
+                elif operacao == '1/x':
+                    globais.acumulador = 1 / globais.acumulador
+                elif operacao == 'x^2':
+                    globais.acumulador **= 2
+                elif operacao == 'r2x':
+                    if globais.acumulador <= 0:
+                        print("Não é possivel tirar a raiz de números negativos")
+                    else:
+                        globais.acumulador **= 0.5
+                elif operacao != str:
+                    globais.acumulador = float(operacao)     
+                else:
+                    raise NotImplementedError("Outras operações não implementadas")
+            except ValueError:
+                print("Este não é um caracter válido")
+
+            print(f'Acumulador: {globais.acumulador}; Backup: {globais.backup}; Memória: {globais.memoria}')
+
+        print(f'Resultado Final: Acumulador: {globais.acumulador}; Backup: {globais.backup}; Memória: {globais.memoria}')
+
+    if __name__=='__main__':
+         main()
+except KeyboardInterrupt:
+       print(f'\n Resultado Final: Acumulador: {globais.acumulador}; Backup: {globais.backup}; Memória: {globais.memoria}')
+       print("O usuario decidiu encerrar o sistema")   
